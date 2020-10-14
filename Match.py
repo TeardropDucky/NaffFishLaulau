@@ -13,3 +13,6 @@ class Match:
         self.Day = Day
         self.Date = Date
         self.Time = Time
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}({self.HomeTeam}, {self.HomeScore}, {self.AwayTeam}, {self.AwayScore}, {self.Date})'

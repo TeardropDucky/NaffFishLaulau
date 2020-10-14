@@ -8,3 +8,6 @@ class Season:
         self.Year = Year
         self.HomeWins = HomeWins
         self.AwayWins = AwayWins
+
+    def __repr__(self):
+        return f'Season({self.Year})'

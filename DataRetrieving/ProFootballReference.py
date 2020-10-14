@@ -14,7 +14,12 @@ class ProFootballReference:
 
     def __findTeam(self, TeamName):
         for team in self.Teams:
-            if team.Name == TeamName:
+            if team.AltTeamName is not None or team.AltHomeCity is not None:
+                if TeamName == team.AltHomeCity + ' ' + team.TeamName:
+                    return team
+                elif TeamName == team.HomeCity + ' ' + team.AltTeamName:
+                    return team
+            if TeamName == team.Name:
                 return team
         return None
 
