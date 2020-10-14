@@ -2,6 +2,8 @@ from DataRetrieving.ProFootballReference import ProFootballReference
 
 from Team import Team
 
+
+
 Arizona = Team("Cardinals", 1000, "Arizona")
 Atalanta = Team("Falcons", 1000, "Atlanta")
 Baltimore = Team("Ravens", 1000, "Baltimore")
@@ -40,6 +42,7 @@ SanFrancisco = Team("49ers", 1000, 'San Francisco')
 Seattle = Team("Seahawks", 1000, 'Seattle')
 TampaBay = Team("Buccaneers", 1000, 'Tampa Bay')
 Tennessee = Team("Titans", 1000, 'Tennessee')
+
 Washington = Team("Redskins", 1000, 'Washington')
 Washington.AltTeamName = "Football Team"
 
@@ -50,5 +53,12 @@ Teams = [Arizona, Atalanta, Baltimore, Buffalo, Carolina, Chicago, Cincinnati, C
 
 
 
+
 x = ProFootballReference(Teams)
-print(x.RetrieveSeason(2002))
+season = x.RetrieveSeason(2002)
+print(season)
+for week in season.Weeks:
+    if week.Week == 'SuperBowl':
+        superBowl = week.Matches[0]
+print(season.Weeks[0])
+print(f'SuperBowl: {superBowl}')

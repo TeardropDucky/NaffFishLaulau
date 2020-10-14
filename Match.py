@@ -1,8 +1,10 @@
+from datetime import datetime
+
 from Team import Team
 
 class Match:
 
-    def __init__(self, HomeTeam, HomeScore, AwayTeam, AwayScore, BoxScore, Day, Date, Time):
+    def __init__(self, HomeTeam, HomeScore, AwayTeam, AwayScore, BoxScore, GameDate):
         self.HomeTeam = HomeTeam
         self.HomeScore = HomeScore
 
@@ -10,9 +12,8 @@ class Match:
         self.AwayScore = AwayScore
 
         self.BoxScore = BoxScore
-        self.Day = Day
-        self.Date = Date
-        self.Time = Time
+        self.GameDate = GameDate
 
     def __repr__(self):
-        return f'{self.__class__.__name__}({self.HomeTeam}, {self.HomeScore}, {self.AwayTeam}, {self.AwayScore}, {self.Date})'
+        return f'{self.__class__.__name__}({self.HomeTeam}, {self.HomeScore}, {self.AwayTeam}, {self.AwayScore}, {self.GameDate})'
+
