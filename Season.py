@@ -10,4 +10,4 @@ class Season:
         self.AwayWins = AwayWins
 
     def __repr__(self):
-        return f'Season({self.Year})'
+        return f'Season({self.Year}, {self.Weeks}, {self.HomeWins}, {self.AwayWins})'

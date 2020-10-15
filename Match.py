@@ -5,6 +5,11 @@ from Team import Team
 class Match:
 
     def __init__(self, HomeTeam, HomeScore, AwayTeam, AwayScore, BoxScore, GameDate):
+        if type(HomeTeam) is not Team or type(AwayTeam) is not Team:
+            raise TypeError('input must two valid Teams')
+        if HomeTeam == AwayTeam:
+            raise TypeError('how can the same team play against itself?')
+
         self.HomeTeam = HomeTeam
         self.HomeScore = HomeScore
 

@@ -1,6 +1,8 @@
 from DataRetrieving.ProFootballReference import ProFootballReference
+from EloRaitingCalculation.EloRatingCalculator import EloRatingCalculator
 
 from Team import Team
+from Match import Match
 
 
 
@@ -28,7 +30,7 @@ LosAngelesChargers = Team('Chargers', 1000, 'Los Angeles')
 LosAngelesChargers.HomeCity = "San Diego"
 
 LosAngelesRams = Team('Rams', 1000, 'Los Angeles')
-LosAngelesRams.HomeCity = "San Diego"
+LosAngelesRams.HomeCity = "St. Louis"
 
 Miami= Team('Dolphins', 1000, 'Miami')
 Minnesota= Team('Vikings', 1000, 'Minnesota')
@@ -48,8 +50,8 @@ Washington.AltTeamName = "Football Team"
 
 Teams = [Arizona, Atalanta, Baltimore, Buffalo, Carolina, Chicago, Cincinnati, Cleveland, Dallas, Denver, Detroit,
          GreenBay, Houston, Indianapolis, Jacksonville, KansasCity, LasVegas, LosAngelesChargers, LosAngelesRams,
-         Miami, Minnesota, NewEngland, NewOrleans, NewYorkGiants, NewYorkJets, Philadelphia, SanFrancisco, Seattle,
-         TampaBay, Tennessee, Washington]
+         Miami, Minnesota, NewEngland, NewOrleans, NewYorkGiants, NewYorkJets, Philadelphia, Pittsburgh, SanFrancisco,
+         Seattle, TampaBay, Tennessee, Washington]
 
 
 
@@ -62,3 +64,10 @@ for week in season.Weeks:
         superBowl = week.Matches[0]
 print(season.Weeks[0])
 print(f'SuperBowl: {superBowl}')
+
+Seattle.EloRating = 1000
+testMatch = Match(Seattle, 10, Baltimore, 10, None, None)
+
+R = EloRatingCalculator()
+R.CalculateElo(testMatch)
+R.CalculateElo(superBowl)
