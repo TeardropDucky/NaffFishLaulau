@@ -11,9 +11,6 @@ class EloRatingCalculator():
         WinExpectedHomeTeam = round(1 / ( 1 + 10 ** ((match.AwayTeam.EloRating - match.HomeTeam.EloRating) / 400 )), 2)
         WinExpectedAwayTeam = round(1 / ( 1 + 10 ** ((match.HomeTeam.EloRating - match.AwayTeam.EloRating) / 400 )), 2)
 
-        print(WinExpectedHomeTeam)
-        print(WinExpectedAwayTeam)
-
         if match.HomeScore > match.AwayScore:
             homeNewRating = match.HomeTeam.EloRating + (self.__k * (2 - WinExpectedHomeTeam))
             awayNewRating = match.AwayTeam.EloRating - (self.__k * (2 - WinExpectedAwayTeam))

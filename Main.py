@@ -67,6 +67,7 @@ print(f'SuperBowl: {superBowl}')
 
 Seattle.EloRating = 1000
 testMatch = Match(Seattle, 10, Baltimore, 10, None, None)
+season.Weeks[0].PrintTeamRatings()
 
 R = EloRatingCalculator()
 R.CalculateElo(testMatch)
