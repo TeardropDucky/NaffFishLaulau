@@ -29,7 +29,7 @@ class ProFootballReference:
 
     def __findTeam(self, TeamName):
         for team in self.Teams:
-            if team.AltTeamName is not None or team.AltHomeCity is not None:
+            if team.AltTeamName is not "" or team.AltHomeCity is not "":
                 if TeamName == team.AltHomeCity + ' ' + team.TeamName:
                     return team
                 elif TeamName == team.HomeCity + ' ' + team.AltTeamName:
@@ -112,6 +112,7 @@ class ProFootballReference:
                             break
 
             season = Season(Year, gameWeeks, homeWins, awayWins)
+
         except Exception as e:
             print(e)
             season = None

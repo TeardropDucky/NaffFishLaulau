@@ -1,5 +1,4 @@
 from DataRetrieving.ProFootballReference import ProFootballReference
-from EloRaitingCalculation.EloRatingCalculator import EloRatingCalculator
 
 from Team import Team
 from Match import Match
@@ -24,13 +23,13 @@ Jacksonville = Team('Jaguars', 1000, 'Jacksonville')
 KansasCity= Team('Chiefs', 1000, 'Kansas City')
 
 LasVegas = Team('Raiders', 1000, 'Las Vegas')
-LasVegas.HomeCity = "Oakland"
+LasVegas.AltHomeCity = "Oakland"
 
 LosAngelesChargers = Team('Chargers', 1000, 'Los Angeles')
-LosAngelesChargers.HomeCity = "San Diego"
+LosAngelesChargers.AltHomeCity = "San Diego"
 
 LosAngelesRams = Team('Rams', 1000, 'Los Angeles')
-LosAngelesRams.HomeCity = "St. Louis"
+LosAngelesRams.AltHomeCity = "St. Louis"
 
 Miami= Team('Dolphins', 1000, 'Miami')
 Minnesota= Team('Vikings', 1000, 'Minnesota')
@@ -57,18 +56,19 @@ Teams = [Arizona, Atalanta, Baltimore, Buffalo, Carolina, Chicago, Cincinnati, C
 
 
 x = ProFootballReference(Teams)
-season = x.RetrieveSeason(2002)
-print(season)
-for week in season.Weeks:
-    if week.Week == 'SuperBowl':
-        superBowl = week.Matches[0]
-print(season.Weeks[0])
-print(f'SuperBowl: {superBowl}')
+history = []
+# x.RetrieveSeason(2018)
 
-Seattle.EloRating = 1000
-testMatch = Match(Seattle, 10, Baltimore, 10, None, None)
-season.Weeks[0].PrintTeamRatings()
+for year in range(2002, 2019):
+    season = x.RetrieveSeason(year)
+    print('got season' + str(year))
+    history.append(season)
 
-R = EloRatingCalculator()
-R.CalculateElo(testMatch)
-R.CalculateElo(superBowl)
+for season in history:
+    season.UpdateSeason()
+
+# Teams.sort(key=lambda  y: y.EloRating)
+Teams.sort(key=lambda  y: y.AvgPointDifference)
+for team in Teams:
+    print(str(team) + f' Avg PDif(t/h/a): {team.AvgPointDifference} / {team.AvgPointDifferenceH} / {team.AvgPointDifferenceA}')
+

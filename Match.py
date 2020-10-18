@@ -10,11 +10,14 @@ class Match:
         if HomeTeam == AwayTeam:
             raise TypeError('how can the same team play against itself?')
 
+        self.HomeScore = int(HomeScore)
+        self.AwayScore = int(AwayScore)
+
         self.HomeTeam = HomeTeam
-        self.HomeScore = HomeScore
+        self.HomeTeam.AvgPointDifferenceH = round((self.HomeScore - self.AwayScore + self.HomeTeam.AvgPointDifferenceH) / 2, 2)
 
         self.AwayTeam = AwayTeam
-        self.AwayScore = AwayScore
+        self.AwayTeam.AvgPointDifferenceA = round((self.AwayScore - self.HomeScore + self.HomeTeam.AvgPointDifferenceA) / 2, 2)
 
         self.BoxScore = BoxScore
         self.GameDate = GameDate

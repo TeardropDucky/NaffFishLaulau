@@ -2,7 +2,7 @@ from Match import Match
 from Team import Team
 
 class EloRatingCalculator():
-    __k = 24
+    __k = 10
 
     def CalculateElo(self, match):
         if type(match) is not Match:
@@ -38,8 +38,8 @@ class EloRatingCalculator():
         else:
             awayNewRating = 1000
 
-        print(f'{match.HomeTeam.Name} new Rating: {homeNewRating}')
-        print(f'{match.AwayTeam.Name} new Rating: {awayNewRating}')
+        match.HomeTeam.EloRating = homeNewRating
+        match.AwayTeam.EloRating = awayNewRating
 
         return True
 
